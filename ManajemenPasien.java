@@ -10,6 +10,7 @@ public class ManajemenPasien {
     static ArrayList<Pasien> antrian = new ArrayList<>();
 
 
+
     // Mencari pasien menggunakan nama
     public static Pasien cariPasienNama() {
 
@@ -24,6 +25,26 @@ public class ManajemenPasien {
 
     // Menambahkan data pasien
     public static void tambahPasien() {
+    System.out.println("\n=== Pendaftaran Pasien ===");
+	
+	System.out.print("Nama Pasien				: ");
+	String nama = input.nextLine();
+	
+	System.out.print("Umur						: ");
+	int umur = input.nextInt();
+	
+	System.out.print("Asal						: ");
+	String asal = input.nextLine();
+	
+	System.out.print("Tanggal Lahir				: ");
+	String tanggalLahir = input.nextLine();
+	
+	System.out.print("Golongan Penyakit			: ");
+	String tingkatPenyakit = input.nextLine();  
+	
+	
+	Pasien pasienBaru = new Pasien
+
 
     }
 
