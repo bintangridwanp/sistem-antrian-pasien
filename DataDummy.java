@@ -19,6 +19,7 @@ public class DataDummy {
         nama[8] = "Agus";   umur[8] = 45; asal[8] = "Malang";   tanggalLahir[8] = "02-02-1980"; tingkatPenyakit[8] = "Sedang";
         nama[9] = "Lina";   umur[9] = 31; asal[9] = "Semarang"; tanggalLahir[9] = "06-06-1993"; tingkatPenyakit[9] = "Berat";
 
-        return 10; // jumlah data dummy
+        // Mengembalikan 10 data dummy
+        return 10;
     }
 }

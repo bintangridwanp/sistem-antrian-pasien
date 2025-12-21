@@ -1,46 +1,9 @@
 import java.util.Scanner;
-
 public class App {
 
     static Scanner input = new Scanner(System.in);
 
-    // Header
-    static void tampilkanHeader() {
-        System.out.println("==========================================");
-        System.out.println("   SISTEM ANTRIAN KLINIK KESEHATAN");
-        System.out.println("==========================================");
-    }
-
-    // Menampilkan menu
-    public static void tampilkanMenu() {
-        System.out.printf(
-                "\n%-30s\n" +
-                        "----------------------------------------------\n" +
-                        "1. %-30s\n" +
-                        "2. %-30s\n" +
-                        "3. %-30s\n" +
-                        "4. %-30s\n" +
-                        "5. %-30s\n" +
-                        "6. %-30s\n" +
-                        "7. %-30s\n" +
-                        "8. %-30s\n" +
-                        "0. %-30s\n" +
-                        "----------------------------------------------\n" +
-                        "Pilih menu: ",
-                "MENU UTAMA",
-                "Cari Nama Pasien",
-                "Cari Golongan Penyakit",
-                "Pendaftaran Pasien",
-                "Edit Data Pasien",
-                "Hapus Data Pasien",
-                "Tambah ke Antrian Biasa",
-                "Tambah ke Antrian Prioritas",
-                "Tampilkan Antrian",
-                "Keluar"
-        );
-    }
-
-    // main program
+    // Main program
     public static void main(String[] args) {
 
         // Load data dummy
@@ -53,16 +16,16 @@ public class App {
                         ManajemenPasien.tingkatPenyakit
                 );
 
-        tampilkanHeader();
+        ManajemenPasien.tampilkanHeader();
         System.out.println("Data dummy dimuat: "
                 + ManajemenPasien.jumlahPasien + " pasien");
 
         int pilihan;
 
         do {
-            tampilkanMenu();
+            ManajemenPasien.tampilkanMenu();
             pilihan = input.nextInt();
-            input.nextLine(); // bersihkan buffer
+            input.nextLine();
 
             switch (pilihan) {
                 case 1: {
@@ -97,6 +60,10 @@ public class App {
 
                 case 7:
                     ManajemenPasien.tampilkanAntrian();
+                    break;
+
+                case 8:
+                    ManajemenPasien.tampilkanSemuaPasien();
                     break;
 
                 case 0:

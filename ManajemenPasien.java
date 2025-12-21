@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class ManajemenPasien {
     static Scanner input = new Scanner(System.in);
 
@@ -9,7 +8,7 @@ public class ManajemenPasien {
     static String[] tanggalLahir = new String[100];
     static String[] tingkatPenyakit = new String[100];
 
-    static int[] antrian = new int[100]; // simpan INDEX pasien
+    static int[] antrian = new int[100];
     static int jumlahAntrian = 0;
 
     // Menambahkan header
@@ -41,13 +40,12 @@ public class ManajemenPasien {
             "Pendaftaran Pasien",
             "Edit Data Pasien",
             "Hapus Data Pasien",
-            "Tambah ke Antrian Biasa",
             "Tambah ke Antrian Prioritas",
             "Tampilkan Antrian",
+            "Tampilkan Semua Pasien",
             "Keluar"
         );
     }
-
 
     static int jumlahPasien = 0;
 
@@ -129,7 +127,7 @@ public class ManajemenPasien {
         System.out.println("Data pasien berhasil diperbarui.");
     }
 
-    // Procedure menghapus data pasien
+    // Menghapus data pasien
     public static void hapusPasien() {
         int idx = cariPasien();
         if (idx == -1) {
@@ -144,9 +142,25 @@ public class ManajemenPasien {
             tanggalLahir[i] = tanggalLahir[i + 1];
             tingkatPenyakit[i] = tingkatPenyakit[i + 1];
         }
-
         jumlahPasien--;
-        System.out.println("Data pasien berhasil dihapus.");
+
+        int i = 0;
+        while (i < jumlahAntrian) {
+            if (antrian[i] == idx) {
+                // Hapus dari antrian
+                for (int j = i; j < jumlahAntrian - 1; j++) {
+                    antrian[j] = antrian[j + 1];
+                }
+                jumlahAntrian--;
+            } else {
+                if (antrian[i] > idx) {
+                    antrian[i]--;
+                }
+                i++;
+            }
+        }
+
+        System.out.println("Data pasien dan antrian berhasil dihapus.");
     }
 
     // Procedure mencari pasien berdasarkan golongan penyakit
@@ -225,5 +239,34 @@ public class ManajemenPasien {
         System.out.println("Asal   : " + asal[i]);
         System.out.println("Lahir  : " + tanggalLahir[i]);
         System.out.println("Penyakit: " + tingkatPenyakit[i]);
+    }
+
+    // Procedure menampilkan semua data pasien dalam bentuk tabel
+    public static void tampilkanSemuaPasien() {
+        if (jumlahPasien == 0) {
+            System.out.println("Belum ada data pasien.");
+            return;
+        }
+
+        System.out.println("\n========================== DAFTAR PASIEN ==========================");
+        System.out.printf(
+                "| %-3s | %-15s | %-4s | %-12s | %-13s | %-15s |\n",
+                "No", "Nama", "Umur", "Asal", "Tgl Lahir", "Penyakit"
+        );
+        System.out.println("-------------------------------------------------------------------");
+
+        for (int i = 0; i < jumlahPasien; i++) {
+            System.out.printf(
+                    "| %-3d | %-15s | %-4d | %-12s | %-13s | %-15s |\n",
+                    (i + 1),
+                    nama[i],
+                    umur[i],
+                    asal[i],
+                    tanggalLahir[i],
+                    tingkatPenyakit[i]
+            );
+        }
+
+        System.out.println("===================================================================");
     }
 }
