@@ -1,114 +1,272 @@
-import java.util.ArrayList;
 import java.util.Scanner;
-
 public class ManajemenPasien {
-    // Objek input scanner
     static Scanner input = new Scanner(System.in);
 
-    // Array list untuk menyimpan daftar pasien dan antrian
-    static ArrayList<Pasien> daftarPasien = new ArrayList<>();
-    static ArrayList<Pasien> antrian = new ArrayList<>();
+    static String[] nama = new String[100];
+    static int[] umur = new int[100];
+    static String[] asal = new String[100];
+    static String[] tanggalLahir = new String[100];
+    static String[] tingkatPenyakit = new String[100];
 
+    static int[] antrian = new int[100];
+    static int jumlahAntrian = 0;
 
-
-    // Mencari pasien menggunakan nama
-    public static Pasien cariPasienNama() {
-
-        return null;
+    // Menambahkan header
+    public static void tampilkanHeader() {
+        System.out.println("===============================================");
+        System.out.println("        SISTEM ANTRIAN KLINIK KESEHATAN        ");
+        System.out.println("===============================================");
     }
 
-    // Mencari pasien berdasarkan penyakit
-    public static ArrayList<Pasien> cariPasienGolongan() {
-
-        return null;
+    // Menambahkan menu
+    public static void tampilkanMenu() {
+        System.out.printf(
+            "\n%-30s\n" +
+            "----------------------------------------------\n" +
+            "1. %-30s\n" +
+            "2. %-30s\n" +
+            "3. %-30s\n" +
+            "4. %-30s\n" +
+            "5. %-30s\n" +
+            "6. %-30s\n" +
+            "7. %-30s\n" +
+            "8. %-30s\n" +
+            "0. %-30s\n" +
+            "----------------------------------------------\n" +
+            "Pilih menu: ",
+            "MENU UTAMA",
+            "Cari Nama Pasien",
+            "Cari Golongan Penyakit",
+            "Pendaftaran Pasien",
+            "Edit Data Pasien",
+            "Hapus Data Pasien",
+            "Tambah ke Antrian Prioritas",
+            "Tampilkan Antrian",
+            "Tampilkan Semua Pasien",
+            "Keluar"
+        );
     }
 
-    // Menambahkan data pasien
-    public static void tambahPasien() {
-    System.out.println("\n=== Pendaftaran Pasien ===");
-	
-	System.out.print("Nama Pasien				: ");
-	String nama = input.nextLine();
-	
-	System.out.print("Umur						: ");
-	int umur = input.nextInt();
-	
-	System.out.print("Asal						: ");
-	String asal = input.nextLine();
-	
-	System.out.print("Tanggal Lahir				: ");
-	String tanggalLahir = input.nextLine();
-	
-	System.out.print("Golongan Penyakit			: ");
-	String tingkatPenyakit = input.nextLine();  
-	
-	
-	Pasien pasienBaru = new Pasien
+    static int jumlahPasien = 0;
 
+    // Function untuk membandingkan string A / a
+    static boolean samaString(String a, String b) {
+        if (a.length() != b.length()) return false;
 
+        for (int i = 0; i < a.length(); i++) {
+            char c1 = a.charAt(i);
+            char c2 = b.charAt(i);
+
+            if (c1 >= 'A' && c1 <= 'Z') c1 += 32;
+            if (c2 >= 'A' && c2 <= 'Z') c2 += 32;
+
+            if (c1 != c2) return false;
+        }
+        return true;
     }
 
-    // Mengedit data pasien
+    // Procedure menambahkan data pasien
+    static void tambahPasien() {
+        System.out.print("Nama: ");
+        nama[jumlahPasien] = input.nextLine();
+
+        System.out.print("Umur: ");
+        umur[jumlahPasien] = input.nextInt();
+        input.nextLine();
+
+        System.out.print("Asal: ");
+        asal[jumlahPasien] = input.nextLine();
+
+        System.out.print("Tanggal Lahir: ");
+        tanggalLahir[jumlahPasien] = input.nextLine();
+
+        System.out.print("Tingkat Penyakit: ");
+        tingkatPenyakit[jumlahPasien] = input.nextLine();
+
+        jumlahPasien++;
+        System.out.println("Pasien berhasil ditambahkan.");
+    }
+
+    // Function Mencari pasien berdasarkan nama (menggunakan index)
+    static int cariPasien() {
+        System.out.print("Masukkan nama pasien: ");
+        String cari = input.nextLine();
+
+        for (int i = 0; i < jumlahPasien; i++) {
+            if (samaString(nama[i], cari)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // Procedure mengedit data pasien
     public static void editPasien() {
-
-    }
-
-    // Menghapus data pasien
-    public static void hapusPasien() {
-
-    }
-
-    // Menambahkan pasien ke antrian
-    public static void tambahKeAntrian() {
-
-
-    }
-
-    // Menambahkan pasien ke antria preoritas
-    public static void tambahKeAntrianPrioritas() {
-        Pasien p = cariPasienNama();
-
-        if (p == null) {
+        int idx = cariPasien();
+        if (idx == -1) {
             System.out.println("Pasien tidak ditemukan.");
             return;
         }
 
-        // logic prioritas
-        if (p.tingkatPenyakit.equalsIgnoreCase("berat")) {
-            antrian.add(0, p);
+        System.out.print("Nama baru: ");
+        nama[idx] = input.nextLine();
 
-        } else if (p.tingkatPenyakit.equalsIgnoreCase("sedang")) {
+        System.out.print("Umur baru: ");
+        umur[idx] = input.nextInt();
+        input.nextLine();
 
-            int posisi = 0;
+        System.out.print("Asal baru: ");
+        asal[idx] = input.nextLine();
 
-            for (int i = 0; i < antrian.size(); i++) {
-                if (antrian.get(i).tingkatPenyakit.equalsIgnoreCase("berat")) {
-                    posisi = i + 1;
-                }
-            }
-            antrian.add(posisi, p);
+        System.out.print("Tanggal lahir baru: ");
+        tanggalLahir[idx] = input.nextLine();
 
-        } else {
-            antrian.add(p);
-        }
+        System.out.print("Tingkat penyakit baru: ");
+        tingkatPenyakit[idx] = input.nextLine();
 
-        System.out.println("Pasien masuk ke antrian prioritas.");
-
+        System.out.println("Data pasien berhasil diperbarui.");
     }
 
-    // Menampilkan daftar antrian
+    // Menghapus data pasien
+    public static void hapusPasien() {
+        int idx = cariPasien();
+        if (idx == -1) {
+            System.out.println("Pasien tidak ditemukan.");
+            return;
+        }
+
+        for (int i = idx; i < jumlahPasien - 1; i++) {
+            nama[i] = nama[i + 1];
+            umur[i] = umur[i + 1];
+            asal[i] = asal[i + 1];
+            tanggalLahir[i] = tanggalLahir[i + 1];
+            tingkatPenyakit[i] = tingkatPenyakit[i + 1];
+        }
+        jumlahPasien--;
+
+        int i = 0;
+        while (i < jumlahAntrian) {
+            if (antrian[i] == idx) {
+                // Hapus dari antrian
+                for (int j = i; j < jumlahAntrian - 1; j++) {
+                    antrian[j] = antrian[j + 1];
+                }
+                jumlahAntrian--;
+            } else {
+                if (antrian[i] > idx) {
+                    antrian[i]--;
+                }
+                i++;
+            }
+        }
+
+        System.out.println("Data pasien dan antrian berhasil dihapus.");
+    }
+
+    // Procedure mencari pasien berdasarkan golongan penyakit
+    public static void cariPasienGolongan() {
+        System.out.print("Masukkan tingkat penyakit: ");
+        String cari = input.nextLine();
+
+        boolean ada = false;
+
+        for (int i = 0; i < jumlahPasien; i++) {
+            if (samaString(tingkatPenyakit[i], cari)) {
+                tampilkanPasien(i);
+                System.out.println("--------------------");
+                ada = true;
+            }
+        }
+
+        if (!ada) {
+            System.out.println("Tidak ada pasien dengan golongan tersebut.");
+        }
+    }
+
+    // Procedure menambahkan pasien ke antrian prioritas
+    public static void tambahKeAntrianPrioritas() {
+        int idx = cariPasien();
+        if (idx == -1) return;
+
+        if (samaString(tingkatPenyakit[idx], "Berat")) {
+            for (int i = jumlahAntrian; i > 0; i--) {
+                antrian[i] = antrian[i - 1];
+            }
+            antrian[0] = idx;
+        }
+        else if (samaString(tingkatPenyakit[idx], "Sedang")) {
+            int pos = 0;
+            for (int i = 0; i < jumlahAntrian; i++) {
+                if (samaString(tingkatPenyakit[antrian[i]], "Berat")) {
+                    pos = i + 1;
+                }
+            }
+            for (int i = jumlahAntrian; i > pos; i--) {
+                antrian[i] = antrian[i - 1];
+            }
+            antrian[pos] = idx;
+        }
+        else {
+            antrian[jumlahAntrian] = idx;
+        }
+
+        jumlahAntrian++;
+        System.out.println("Pasien masuk ke antrian prioritas.");
+    }
+
+    // Procedure menampilkan antrian pasien
     public static void tampilkanAntrian() {
-        if (antrian.isEmpty()) {
+        if (jumlahAntrian == 0) {
             System.out.println("Antrian kosong.");
             return;
         }
 
-        System.out.println("\n=== Antrian Pasien ===");
-        int i = 1;
-        for (Pasien p : antrian) {
-            System.out.println(i + ". " + p.nama + " (" + p.tingkatPenyakit + ")");
-            i++;
+        System.out.println("\n=== DAFTAR ANTRIAN ===");
+        for (int i = 0; i < jumlahAntrian; i++) {
+            int idx = antrian[i];
+            System.out.println(
+                    (i + 1) + ". " + nama[idx] +
+                            " (" + tingkatPenyakit[idx] + ")"
+            );
         }
     }
 
+
+    // Procedure menampilkan data pasien berdasarkan index
+    static void tampilkanPasien(int i) {
+        System.out.println("Nama   : " + nama[i]);
+        System.out.println("Umur   : " + umur[i]);
+        System.out.println("Asal   : " + asal[i]);
+        System.out.println("Lahir  : " + tanggalLahir[i]);
+        System.out.println("Penyakit: " + tingkatPenyakit[i]);
+    }
+
+    // Procedure menampilkan semua data pasien dalam bentuk tabel
+    public static void tampilkanSemuaPasien() {
+        if (jumlahPasien == 0) {
+            System.out.println("Belum ada data pasien.");
+            return;
+        }
+
+        System.out.println("\n========================== DAFTAR PASIEN ==========================");
+        System.out.printf(
+                "| %-3s | %-15s | %-4s | %-12s | %-13s | %-15s |\n",
+                "No", "Nama", "Umur", "Asal", "Tgl Lahir", "Penyakit"
+        );
+        System.out.println("-------------------------------------------------------------------");
+
+        for (int i = 0; i < jumlahPasien; i++) {
+            System.out.printf(
+                    "| %-3d | %-15s | %-4d | %-12s | %-13s | %-15s |\n",
+                    (i + 1),
+                    nama[i],
+                    umur[i],
+                    asal[i],
+                    tanggalLahir[i],
+                    tingkatPenyakit[i]
+            );
+        }
+
+        System.out.println("===================================================================");
+    }
 }
