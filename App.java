@@ -37,11 +37,11 @@ public class App {
 				break;
 			
 			case 7:
-				tampilkanAntrian();
+				tambahKeAntrianPrioritas();
 				break;
 			
 			case 8:
-				tambahKeAntrianPrioritas();
+				tampilkanAntrian();
 				break;
 			
 			case 0:
