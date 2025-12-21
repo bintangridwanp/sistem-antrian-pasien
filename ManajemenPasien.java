@@ -12,6 +12,42 @@ public class ManajemenPasien {
     static int[] antrian = new int[100]; // simpan INDEX pasien
     static int jumlahAntrian = 0;
 
+    // Menambahkan header
+    public static void tampilkanHeader() {
+        System.out.println("===============================================");
+        System.out.println("        SISTEM ANTRIAN KLINIK KESEHATAN        ");
+        System.out.println("===============================================");
+    }
+
+    // Menambahkan menu
+    public static void tampilkanMenu() {
+        System.out.printf(
+            "\n%-30s\n" +
+            "----------------------------------------------\n" +
+            "1. %-30s\n" +
+            "2. %-30s\n" +
+            "3. %-30s\n" +
+            "4. %-30s\n" +
+            "5. %-30s\n" +
+            "6. %-30s\n" +
+            "7. %-30s\n" +
+            "8. %-30s\n" +
+            "0. %-30s\n" +
+            "----------------------------------------------\n" +
+            "Pilih menu: ",
+            "MENU UTAMA",
+            "Cari Nama Pasien",
+            "Cari Golongan Penyakit",
+            "Pendaftaran Pasien",
+            "Edit Data Pasien",
+            "Hapus Data Pasien",
+            "Tambah ke Antrian Biasa",
+            "Tambah ke Antrian Prioritas",
+            "Tampilkan Antrian",
+            "Keluar"
+        );
+    }
+
 
     static int jumlahPasien = 0;
 

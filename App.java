@@ -4,7 +4,7 @@ public class App {
 
     static Scanner input = new Scanner(System.in);
 
-   // Header
+    // Header
     static void tampilkanHeader() {
         System.out.println("==========================================");
         System.out.println("   SISTEM ANTRIAN KLINIK KESEHATAN");
@@ -12,24 +12,38 @@ public class App {
     }
 
     // Menampilkan menu
-    static void tampilkanMenu() {
-        System.out.println("\n----------- MENU UTAMA -----------");
-        System.out.println("1. Cari Pasien (Nama)");
-        System.out.println("2. Cari Pasien (Golongan Penyakit)");
-        System.out.println("3. Tambah Data Pasien");
-        System.out.println("4. Edit Data Pasien");
-        System.out.println("5. Hapus Data Pasien");
-        System.out.println("6. Tambah ke Antrian Prioritas");
-        System.out.println("7. Tampilkan Antrian");
-        System.out.println("0. Keluar");
-        System.out.println("---------------------------------");
-        System.out.print("Pilih menu: ");
+    public static void tampilkanMenu() {
+        System.out.printf(
+                "\n%-30s\n" +
+                        "----------------------------------------------\n" +
+                        "1. %-30s\n" +
+                        "2. %-30s\n" +
+                        "3. %-30s\n" +
+                        "4. %-30s\n" +
+                        "5. %-30s\n" +
+                        "6. %-30s\n" +
+                        "7. %-30s\n" +
+                        "8. %-30s\n" +
+                        "0. %-30s\n" +
+                        "----------------------------------------------\n" +
+                        "Pilih menu: ",
+                "MENU UTAMA",
+                "Cari Nama Pasien",
+                "Cari Golongan Penyakit",
+                "Pendaftaran Pasien",
+                "Edit Data Pasien",
+                "Hapus Data Pasien",
+                "Tambah ke Antrian Biasa",
+                "Tambah ke Antrian Prioritas",
+                "Tampilkan Antrian",
+                "Keluar"
+        );
     }
 
-    // Program main
+    // main program
     public static void main(String[] args) {
 
-       // Mendapatkan data dummy
+        // Load data dummy
         ManajemenPasien.jumlahPasien =
                 DataDummy.loadDummy(
                         ManajemenPasien.nama,
