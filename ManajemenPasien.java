@@ -43,7 +43,9 @@ public class ManajemenPasien {
 	String tingkatPenyakit = input.nextLine();  
 	
 	
-	Pasien pasienBaru = new Pasien
+	Pasien pasienBaru = new Pasien(nama, umur, asal, tanggalLahir, tingkatPenyakit);
+
+    daftarPasien.add(pasienBaru);
 
 
     }
