@@ -16,9 +16,9 @@ public class ManajemenPasien {
 
     // Menambahkan header
     public static void tampilkanHeader() {
-        System.out.println("===============================================");
-        System.out.println("        SISTEM ANTRIAN KLINIK KESEHATAN        ");
-        System.out.println("===============================================");
+        System.out.println("===================================================");
+        System.out.println("          SISTEM ANTRIAN KLINIK KESEHATAN          ");
+        System.out.println("===================================================");
     }
 
     // Menambahkan menu
@@ -304,16 +304,16 @@ public class ManajemenPasien {
     // Procedure menampilkan data pasien berdasarkan index
     static void tampilkanPasien(int i) {
         System.out.println();
-        System.out.println("==========================================================================");
-        System.out.println("                          DETAIL DATA PASIEN                               ");
-        System.out.println("==========================================================================");
+        System.out.println("=================================================================================================");
+        System.out.println("                                        DETAIL DATA PASIEN                                       ");
+        System.out.println("=================================================================================================");
 
         System.out.printf(
                 "| %-3s | %-15s | %-4s | %-12s | %-13s | %-15s | %-13s |\n",
                 "No", "Nama", "Umur", "Asal", "Tgl Lahir", "Penyakit", "Gol. Darah"
         );
 
-        System.out.println("--------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------------------");
 
         System.out.printf(
                 "| %-3d | %-15s | %-4d | %-12s | %-13s | %-15s | %-13s |\n",
@@ -326,7 +326,7 @@ public class ManajemenPasien {
                 golonganDarah[i]
         );
 
-        System.out.println("==========================================================================");
+        System.out.println("=================================================================================================");
     }
 
 
@@ -338,12 +338,12 @@ public class ManajemenPasien {
             return;
         }
 
-        System.out.println("\n========================== DAFTAR PASIEN ==========================");
+        System.out.println("\n========================================== DAFTAR PASIEN ==========================================");
         System.out.printf(
                 "| %-3s | %-15s | %-4s | %-12s | %-13s | %-15s | %-15s |\n",
                 "No", "Nama", "Umur", "Asal", "Tgl Lahir", "Penyakit", "Gol. Darah"
         );
-        System.out.println("-------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------------------------------");
 
         for (int i = 0; i < jumlahPasien; i++) {
             System.out.printf(
@@ -358,7 +358,7 @@ public class ManajemenPasien {
             );
         }
 
-        System.out.println("===================================================================");
+        System.out.println("===================================================================================================");
     }
 
     static void hapusDariAntrian(int idx) {
