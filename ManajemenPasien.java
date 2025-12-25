@@ -155,7 +155,7 @@ public class ManajemenPasien {
             tingkatPenyakit[x] = input.nextLine();
 
             if (
-                    !samaString(tingkatPenyakit[x], "Ringan") &&
+                            !samaString(tingkatPenyakit[x], "Ringan") &&
                             !samaString(tingkatPenyakit[x], "Sedang") &&
                             !samaString(tingkatPenyakit[x], "Berat")
             ) {
@@ -163,7 +163,7 @@ public class ManajemenPasien {
             }
 
         } while (
-                !samaString(tingkatPenyakit[x], "Ringan") &&
+                        !samaString(tingkatPenyakit[x], "Ringan") &&
                         !samaString(tingkatPenyakit[x], "Sedang") &&
                         !samaString(tingkatPenyakit[x], "Berat")
         );
@@ -260,6 +260,8 @@ public class ManajemenPasien {
         if (samaString(tingkatPenyakit[x], "Berat")) {
             posisi = 0;
         }
+
+        // Tingkatan sedang selalu ditengah
         else if (samaString(tingkatPenyakit[x], "Sedang")) {
             posisi = 0;
             while (posisi < jumlahAntrian &&
