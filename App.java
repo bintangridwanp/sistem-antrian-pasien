@@ -15,7 +15,7 @@ public class App {
                         ManajemenPasien.asal,
                         ManajemenPasien.tanggalLahir,
                         ManajemenPasien.tingkatPenyakit,
-                        ManajemenPasien.golonganDarah // Tambahkan golongan darah
+                        ManajemenPasien.golonganDarah
                 );
 
         ManajemenPasien.tampilkanHeader();
