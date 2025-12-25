@@ -14,14 +14,14 @@ public class ManajemenPasien {
     static int jumlahAntrian = 0;
     static int jumlahPasien = 0;
 
-    // Menambahkan header
+    // Menambahkan header (naihar)
     public static void tampilkanHeader() {
         System.out.println("===================================================");
         System.out.println("          SISTEM ANTRIAN KLINIK KESEHATAN          ");
         System.out.println("===================================================");
     }
 
-    // Menambahkan menu
+    // Menambahkan menu (naihar)
     public static void tampilkanMenu() {
         System.out.println();
         System.out.println("+----+--------------------------------------------+");
@@ -42,7 +42,7 @@ public class ManajemenPasien {
 
 
 
-    // Function untuk membandingkan string A / a
+    // Function untuk membandingkan string A / a (validasi input)
     public static boolean samaString(String a, String b) {
         if (a == null || b == null) return false;
         if (a.length() != b.length()) return false;
@@ -59,7 +59,7 @@ public class ManajemenPasien {
         return true;
     }
 
-    // Procedure menambahkan data pasien
+    // Procedure menambahkan data pasien (naihar)
     public static void tambahPasien() {
         System.out.print("Nama: ");
         nama[jumlahPasien] = input.nextLine();
@@ -100,7 +100,7 @@ public class ManajemenPasien {
         System.out.println("Pasien berhasil ditambahkan.");
     }
 
-    // Function Mencari pasien berdasarkan nama (menggunakan index)
+    // Function Mencari pasien berdasarkan nama, menggunakan index (zaidan)
     public static int cariPasien() {
         System.out.print("Masukkan nama pasien: ");
         String cari = input.nextLine();
@@ -113,7 +113,7 @@ public class ManajemenPasien {
         return -1;
     }
 
-    // Procedure mengedit data pasien
+    // Procedure mengedit data pasien (zaidan)
     public static void editPasien() {
         int idx = cariPasien();
         if (idx == -1) {
@@ -176,7 +176,7 @@ public class ManajemenPasien {
     }
 
 
-    // Procedure menghapus data pasien
+    // Procedure menghapus data pasien (zaidan)
     public static void hapusPasien() {
         int idx = cariPasien();
         if (idx == -1) {
@@ -213,7 +213,7 @@ public class ManajemenPasien {
         System.out.println("Data pasien dan antrian berhasil dihapus.");
     }
 
-    // Procedure mencari pasien berdasarkan golongan penyakit
+    // Procedure mencari pasien berdasarkan golongan penyakit (zaidan)
     public static void cariPasienGolongan() {
         System.out.print("Masukkan tingkat penyakit: ");
         String cari = input.nextLine();
@@ -233,7 +233,7 @@ public class ManajemenPasien {
         }
     }
 
-    // Procedure menambahkan pasien ke antrian berdasarkan prioritas penyakit
+    // Procedure menambahkan pasien ke antrian berdasarkan prioritas penyakit (bintang)
     public static void tambahKeAntrianPrioritas() {
         int idx = cariPasien();
         if (idx == -1) {
@@ -274,7 +274,7 @@ public class ManajemenPasien {
     }
 
 
-    // Procedure menampilkan antrian pasien
+    // Procedure menampilkan antrian pasien (bintang)
     public static void tampilkanAntrian() {
         if (jumlahAntrian == 0) {
             System.out.println("Antrian kosong.");
@@ -301,7 +301,7 @@ public class ManajemenPasien {
 
 
 
-    // Procedure menampilkan data pasien berdasarkan index
+    // Procedure menampilkan data pasien berdasarkan index (bintang)
     static void tampilkanPasien(int i) {
         System.out.println();
         System.out.println("=================================================================================================");
@@ -331,7 +331,7 @@ public class ManajemenPasien {
 
 
 
-    // Procedure menampilkan semua data pasien dalam bentuk tabel
+    // Procedure menampilkan semua data pasien dalam bentuk tabel (bintang)
     public static void tampilkanSemuaPasien() {
         if (jumlahPasien == 0) {
             System.out.println("Belum ada data pasien.");
@@ -361,6 +361,7 @@ public class ManajemenPasien {
         System.out.println("===================================================================================================");
     }
 
+    // Delete data pasien (zaidan)
     static void hapusDariAntrian(int idx) {
         int i = 0;
         while (i < jumlahAntrian) {

@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+// Main class (naihar)
 public class App {
     static Scanner input = new Scanner(System.in);
 
